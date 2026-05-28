@@ -1,0 +1,132 @@
+.container {
+  background-color: var(--color-surface);
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  max-width: 900px;
+  margin: 2rem auto;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.header {
+  border-bottom: 2px solid var(--color-bg);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.date {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  padding: 4rem;
+}
+
+/* --- Markdown Content Styling (Inherited by the MDX component) --- */
+.content {
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  font-size: 1.125rem;
+}
+
+.content h2 {
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.content p {
+  margin-bottom: 1.5rem;
+}
+
+.content ul, 
+.content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 2rem;
+}
+
+.content li {
+  margin-bottom: 0.5rem;
+}
+
+.content a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  background-color: var(--color-bg);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-size: 0.9em;
+}
+
+.content pre {
+  background-color: var(--color-text-primary); 
+  color: var(--color-surface);
+  padding: 1.5rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 2rem 0;
+}
+
+/* Blockquotes / Callouts */
+.container blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--color-accent); /* Your Vibrant Slate Blue */
+  background-color: var(--color-surface); /* Pure White or Slate Off-White */
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  color: var(--color-text-secondary); /* Muted Slate */
+  font-style: italic;
+}
+
+/* Footnotes Styling */
+.container .footnotes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.backButton {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+  transition: color 0.2s ease;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+.backButton:hover {
+  color: var(--color-accent);
+}

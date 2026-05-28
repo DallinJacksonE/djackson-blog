@@ -1,0 +1,41 @@
+export const meta = {
+  title: "A Standardized Article Template",
+  description: "A quick look at how MDX renders standard Markdown alongside native React components.",
+  date: "October 24, 2024",
+  tags: ["MDX", "React", "Documentation"],
+  is_pinned: 1 // Optional: 1, 2, 3 etc. to pin to the top. Remove if unpinned.
+};
+
+{/* The actual content begins below the meta export. 
+    Your Article.module.css will automatically style all of this! 
+*/}
+
+Building documentation in MDX is incredibly powerful because it is just standard markdown, but you have the full power of the React engine backing it up. 
+
+## The Core Typography
+Your CSS engine is explicitly designed to handle standard tech-blog formatting natively. 
+
+### Code Blocks and Formatting
+Whenever you need to reference a variable like `const isAwesome = true;`, your inline code tags will automatically utilize the JetBrains Mono font. 
+
+If you need a larger block, triple backticks generate a clean, dark-themed surface:
+
+```typescript
+function calculateAwesomeness(techStack: string[]) {
+  if (techStack.includes("MDX")) {
+    return "Maximum Snappiness";
+  }
+  return "Needs more MDX";
+}
+```
+
+## Lists and Links
+Lists are perfectly indented to align with your paragraphs:
+* Point one is clean and simple.
+* Point two naturally falls into place.
+* You can seamlessly include [external links](https://github.com) or route to internal pages.
+
+{/* You can also import and render standard React components right here in the text! 
+    import InteractiveChart from '../../components/InteractiveChart';
+    <InteractiveChart data={myChartData} />
+*/}

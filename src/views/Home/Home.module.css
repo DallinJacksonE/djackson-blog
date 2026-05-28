@@ -1,0 +1,187 @@
+.heroContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* Subtracting an estimated 80px for the Navbar so the hero sits perfectly centered in the remaining viewport */
+  min-height: calc(100vh - 80px); 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-out forwards;
+
+}
+
+.content {
+  max-width: 700px;
+}
+
+.title {
+  font-size: clamp(3rem, 5vw, 4.5rem); /* Responsive sizing that scales cleanly */
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  color: var(--color-accent);
+  /* Applying JetBrains Mono to your name gives a subtle nod to employers that you know your developer tooling */
+  font-family: var(--font-mono); 
+  font-weight: 500;
+}
+
+.subtitle {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap; /* Ensures buttons stack cleanly on mobile devices */
+}
+
+.primaryButton {
+  background-color: var(--color-accent);
+  color: var(--color-surface);
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.primaryButton:hover {
+  background-color: var(--color-accent-hover); /* A slightly deeper blue for the hover state */
+  color: var(--color-surface);
+  transform: translateY(-2px); /* Provides physical feedback when clicked/hovered */
+  box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+}
+
+.secondaryButton {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  padding: 0.875rem 1.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 1px solid var(--color-text-secondary);
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  border-color: var(--color-text-primary);
+  background-color: var(--color-surface);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.heroContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes content left, image right */
+  gap: 4rem; /* Adds breathing room between text and image */
+  min-height: calc(100vh - 80px); 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* --- Add perspective to your existing image wrapper --- */
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+  /* Perspective establishes the 3D camera distance */
+  perspective: 1200px; 
+}
+
+/* --- The Isometric Shelf --- */
+.shelfContainer {
+  display: flex;
+  align-items: flex-end; /* Ensures books rest on the bottom of the shelf */
+  gap: 6px;
+  padding: 1rem 2rem 0 2rem;
+  
+  /* The physical "wooden" shelf board */
+  background-color: var(--color-surface);
+  border-bottom: 16px solid var(--color-border);
+  border-radius: 4px;
+  
+  /* Default Isometric Angles */
+  transform: rotateX(20deg) rotateY(-25deg) rotateZ(5deg);
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s ease;
+  
+  /* A nice cast shadow to ground it */
+  box-shadow: 20px 30px 0px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+}
+
+/* The Straighten-Out Hover Effect */
+.shelfContainer:hover {
+  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Base Book Styling --- */
+.book {
+  width: 45px;
+  border-radius: 4px 6px 6px 4px;
+  /* Inner shadow mimics the curve of a book spine */
+  box-shadow: inset -6px 0 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+/* Hardcoding slightly different heights and muted colors for realism */
+.book:nth-child(1) { height: 160px; background-color: #64748B; }
+.book:nth-child(2) { height: 180px; background-color: #475569; }
+.book:nth-child(4) { height: 150px; background-color: #94A3B8; }
+.book:nth-child(5) { height: 170px; background-color: #334155; }
+
+/* --- The Highlighted Book --- */
+.activeBook {
+  height: 190px;
+  background-color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.spineText {
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  /* Rotates the text to run vertically down the spine */
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+/* The Slide-Out Effect:
+  When the SHELF is hovered, target the ACTIVE BOOK inside it and lift it up 
+*/
+.shelfContainer:hover .activeBook {
+  transform: translateY(-40px);
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 15px 25px rgba(59, 130, 246, 0.3), inset -6px 0 12px rgba(0, 0, 0, 0.1);
+}

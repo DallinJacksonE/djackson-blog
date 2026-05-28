@@ -1,0 +1,95 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Light Theme (Default) */
+  --color-bg: #F8FAFC;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-accent: #3B82F6;
+  --color-accent-hover: #2563EB;
+  --color-border: #E2E8F0;
+  
+  /* Typography Variables */
+  --font-primary: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+[data-theme="dark"] {
+  /* Night Mode / Dark Theme */
+  --color-bg: #0F172A;           
+  --color-surface: #1E293B;      
+  --color-text-primary: #F8FAFC; 
+  --color-text-secondary: #94A3B8; 
+  --color-accent: #3B82F6;       
+  --color-accent-hover: #60A5FA; 
+  --color-border: #334155;       
+}
+
+/* Global Resets and Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  color: var(--color-text-primary);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+code, pre {
+  font-family: var(--font-mono);
+  background-color: var(--color-surface);
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+}
+
+/* Scrollbar styling */
+html {
+  scrollbar-gutter: stable;
+}
+
+html::-webkit-scrollbar {
+  width: 14px; 
+  background-color: transparent;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--color-text-secondary);
+  opacity: 0.4;
+  border-radius: 10px;
+  border: 4px solid rgba(0, 0, 0, 0); 
+  background-clip: padding-box;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-secondary);
+}

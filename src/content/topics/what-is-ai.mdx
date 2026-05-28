@@ -1,0 +1,106 @@
+export const meta = {
+  title: "What is AI",
+  description: "A quick into discussion into AI.",
+  date: "May 29, 2026",
+  tags: ["AI", "AI Crash Course"],
+};
+
+{/* The actual content begins below the meta export. 
+    Your Article.module.css will automatically style all of this! 
+*/}
+
+(Based on the Slides made by Ethan Pederson for BYU CS 470)
+
+## Defining Intelligence
+What is intelligence? There are a few definitions depending on the context.
+
+> **General Definition**
+> The ability to acquire and apply knowledge and skills.
+
+> **Medical Definition**
+> The ability to solve complex problems or make decisions with outcomes.
+
+> **Human Definition**
+> Ability for reasoning, problem solving, learning.
+
+When we see something that has the capacity to act for itself, we tend to think that it has some level of intelligence.
+
+## Defining Artificial Intelligence
+Can this be done artificially and still count as intelligence? Many say yes. This has lead to much discussion of what AI is and what it is meant to be - should it copy us or should we seek to make it "smarter" and more capable than us? There is also a divide between wheter AI is a thinker or an actor. This gives us four camps to discuss.
+
+There are four main approaches to defining what the most important trait of Artificial Intelligence is.
+
+**Thinking Humanly**
+> “The exciting new effort to make computers think . . . machines with minds, in the full and literal sense.”[^1]
+
+> "[The automation of] activities that we associate with human thinking, activities such as decision-making, problem solving, learning. . ."[^2]
+
+**Thinking Rationally**
+> “The study of mental faculties through the use of computational models.” [^3]
+
+> “The study of the computations that make it possible to perceive, reason, and act.” [^4]
+
+**Acting Humanly**
+> “The art of creating machines that perform functions that require intelligence when performed by people.” [^5]
+
+> “The study of how to make computers do things at which, at the moment, people are better.” [^6]
+
+**Acting Rationally**
+> “Computational Intelligence is the study of the design of intelligent agents.” [^7]
+
+> "AI . . . is concerned with intelligent behaviour in artifacts." [^8]
+
+## Acting Humanly
+This approach is to take an intelligent task that people do, such as:
+* Proving a theorem
+* Playing chess
+* Surgery
+* Diagnosing disease
+* Drive a car
+
+And have the system perform it automatically. This would mirror the human, including the flaws. This camp is where you see the Turing Test be important, where given a blind test the examiner cannot tell if they are interacting with a human or an AI system. This test was passed by GPT-4.5 [^9]. There are issues with this test, since it is not reproducible or amenable to mathematical analysis (relies on human opinion).
+
+LLMs which have exploded recently are great examples of an AI that excells at acting humanly.
+
+## Thinking Humanly
+Here the _how_ matters when it comes to performing a task. The system must have the capacity to reason and step through knowledge. This requires the ability to create and manipulate symbolic knowledge (definitions, concepts, laws, theorems).
+
+This approach requires a reliance on scientific theories of the brain. This is both a strength and a weakness since there is no way to really know if our theory is the right one, to what level it needs to be abstracted, or how to validate it. However, taking this approach has led to the design of neural networks basing computer thought on the neuron, which has been a powerful structure in AI.
+
+## Thinking Rationally
+This approach is like the previous, but rather than relying on a model of the human brain or understanding to shape the model, we define a "rational" set of correct arguemnts. These approaches try to make AI follow a logical understanding using reasoning structures like Aristotle's sequence of axioms.
+
+This has a few problems:
+* Not all intelligent behavior is mediated by logical deliberation.
+* What is the purpose of thinking? What thoughts are correct to have?
+* Not easy to represent informal knowledge in formal logic terms.
+
+## Acting Rationally
+Rational behavior is doing the right/best thing. This is whatever would lead to the best outcome given goals based on available information. This approach is strongly connected to economic and control theory. This doesn't really require thinking, rational reflexes exist. But any thinking that does occur is in the service of rational action. This "rational agent" takes the approach that **human intelligence != artificial intelligence**. The thinking here is that we should not expect computer intelligence to be the same as human intelligence anymore than we expect airplanes to fly the same as a bird.
+
+## Can AI Really Exist?
+AI has made impressive achievements showing that tasks that require intelligence can be automated. But each success of AI seems to push further the limits of what we consider “intelligence” (ex: chess). An important argument is made by John Searle in 1980. 
+
+Suppose that artificial intelligence research has succeeded in programming a computer to behave as if it understands Chinese. The machine accepts Chinese characters as input, carries out each instruction of the program step by step, and then produces Chinese characters as output. The machine does this so perfectly that no one can tell that they are communicating with a machine and not a hidden Chinese speaker.
+
+The questions at issue are these: does the machine actually understand the conversation, or is it just simulating the ability to understand the conversation? Does the machine have a mind in exactly the same sense that people do, or is it just acting as if it had a mind?
+
+Now suppose that Searle is in a room with an English version of the program, along with sufficient pencils, paper, erasers and filing cabinets. Chinese characters are slipped in under the door, and he follows the program step-by-step, which eventually instructs him to slide other Chinese characters back out under the door. If the computer had passed the Turing test this way, it follows that Searle would do so as well, simply by running the program by hand.
+
+Searle can see no essential difference between the roles of the computer and himself in the experiment. Each simply follows a program, step-by-step, producing behavior that makes them appear to understand. However, Searle would not be able to understand the conversation. Therefore, he argues, it follows that the computer would not be able to understand the conversation either.
+
+Searle argues that, without "understanding" (or "intentionality"), we cannot describe what the machine is doing as "thinking" and, since it does not think, it does not have a "mind" in the normal sense of the word. Therefore, he concludes that the strong AI hypothesis is false: a computer running a program that simulates a mind would not have a mind in the same sense that human beings have a mind. [^10]
+
+Most of your discussions with people about AI will be about what the current definition is, the approach it is taking, and whether or not this time the breakthrough will be "AGI Skynet." If you say that AI can't exist, you are right. If you say AI can exist, you are also right. If you are claiming that LLMs have symbolic understanding, you are wrong but kinda right. If you are claiming that minds can be born out of a GPU, then maybe you work for Nvidia. Claims and definitions vary widely in the talk of AI.
+
+
+[^1]: Haugeland, 1985
+[^2]: Bellman, 1978
+[^3]: Charniak and McDermott, 1985
+[^4]: Winston, 1992
+[^5]: Kurzwil, 1990
+[^6]: Rich and Knight, 1991
+[^7]: Poole _et al._., 1998
+[^8]: Nilsson, 1998
+[^9]: [Jones and Bergen, 2025](https://arxiv.org/pdf/2503.23674)
+[^10]: [Chinese Room](https://en.wikipedia.org/wiki/Chinese_room)

@@ -1,0 +1,87 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  color: var(--color-text-primary);
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover .title {
+  color: var(--color-accent);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  transition: color 0.2s ease;
+  margin: 0;
+}
+
+.date {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary); /* Matches your muted slate styling */
+}
+
+.description {
+  color: var(--color-text-secondary);
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
