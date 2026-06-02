@@ -30,7 +30,7 @@ jobs:
           ssh -T -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ProxyCommand="cloudflared access ssh --hostname %h" -i ~/.ssh/id_ed25519 $SERVER_USER@$CF_HOSTNAME << 'EOF'
             set -x
           
-            cd /home/dj/djackson_blog
+            cd /home/dj/djackson-blog
             
             # Pull any new changes securely using the deploy key
             GIT_SSH_COMMAND="ssh -i ~/.ssh/djackson-blog-pull -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git pull origin main
