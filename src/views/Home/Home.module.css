@@ -185,3 +185,52 @@
   background-color: var(--color-accent-hover);
   box-shadow: 0 15px 25px rgba(59, 130, 246, 0.3), inset -6px 0 12px rgba(0, 0, 0, 0.1);
 }
+
+/* --- Mobile Responsive Rules --- */
+@media (max-width: 768px) {
+  .heroContainer {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-top: 4rem; /* Provides breathing room below the navbar */
+    gap: 3rem; 
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the text block and buttons */
+  }
+
+  .buttonGroup {
+    justify-content: center; /* Centers the two buttons on mobile */
+  }
+
+  .imageWrapper {
+    padding: 1rem;
+    perspective: 800px; /* Bring the 3D camera slightly closer for smaller screens */
+  }
+
+  /* Optional: Soften the isometric angle slightly so it fits better on narrow phone screens */
+  .shelfContainer {
+    transform: rotateX(15deg) rotateY(-15deg) rotateZ(5deg);
+  }
+}
+
+.subtleLink {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 0.875rem 0.5rem; /* Matches the height of the other buttons */
+  transition: color 0.2s ease;
+}
+
+.subtleLink:hover {
+  color: var(--color-text-primary); /* Brightens slightly on hover */
+  text-decoration: underline;
+  text-underline-offset: 4px; /* Keeps the underline looking modern and clean */
+}
+

@@ -20,17 +20,23 @@ export default function Home() {
           <Link to="/blogs" className={styles.secondaryButton}>
             Read the Blog
           </Link>
+          <a
+            href="https://djackson.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.subtleLink}
+          >
+            View my portfolio &rarr;
+          </a>
         </div>
       </div>
 
       <div className={styles.imageWrapper}>
-        {/* New 3D Animated Bookshelf */}
         <Link to="/topics">
           <div className={styles.shelfContainer}>
             <div className={styles.book}></div>
             <div className={styles.book}></div>
 
-            {/* The highlighted book that pulls out */}
             <div className={`${styles.book} ${styles.activeBook}`}>
               <span className={styles.spineText}>TOPICS</span>
             </div>
