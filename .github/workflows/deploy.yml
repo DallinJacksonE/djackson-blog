@@ -33,7 +33,7 @@ jobs:
             cd /home/dj/djackson_blog
             
             # Pull any new changes securely using the deploy key
-            GIT_SSH_COMMAND="ssh -i ~/.ssh/djackson2_deploy_key -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git pull origin main
+            GIT_SSH_COMMAND="ssh -i ~/.ssh/djackson-blog-pull -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" git pull origin main
             
             docker compose up -d --build
             
