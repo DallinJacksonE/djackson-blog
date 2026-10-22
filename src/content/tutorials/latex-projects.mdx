@@ -1,0 +1,161 @@
+export const meta = {
+  title: "Building a LaTeX Project",
+  description:
+    "Write a small report with separate sections, equations, references, and a repeatable PDF build.",
+  date: "April 22, 2024",
+  tags: ["LaTeX", "Technical Writing", "Documentation", "Git"],
+};
+
+LaTeX is useful when a document needs equations, references, and consistent formatting. You write the content in text files, then compile them into a PDF.[1] I like treating a report as a small project: one entry point, a few focused files, and a build command.
+
+We will make a short report with two sections and a bibliography. You can use Overleaf in a browser or a local editor.
+
+## Choose where to work
+
+For Overleaf, create a blank project and add the files below. Set `main.tex` as the main document and use the pdfLaTeX compiler. Use **Recompile** to build it.
+
+For local work, install a TeX distribution, such as TeX Live or MiKTeX, plus `latexmk`. Check that `pdflatex`, `bibtex`, and `latexmk` are available from your terminal. A text editor alone is not a LaTeX installation.
+
+Start with this layout:
+
+```text
+report/
+  main.tex
+  references.bib
+  sections/
+    introduction.tex
+    results.tex
+  .gitignore
+```
+
+## Give the document one entry point
+
+Create `main.tex`:
+
+```latex
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage[hidelinks]{hyperref}
+
+\title{A Small Project Report}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input{sections/introduction}
+\input{sections/results}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
+```
+
+The document class chooses the basic document type. Packages add capabilities: `geometry` sets margins, `amsmath` supports mathematical writing, and `hyperref` adds document links. The lines before `\begin{document}` are the preamble.[1]
+
+Keep the preamble in this file. The section files contain content, not another document wrapper. `\input` inserts their contents without forcing a new page.[2]
+
+## Write the sections
+
+Create `sections/introduction.tex`:
+
+```latex
+\section{Introduction}
+\label{sec:introduction}
+
+This report describes a small project. We use the sample
+project notes as a reference~\cite{projectnotes}.
+
+The goals are:
+\begin{itemize}
+  \item Explain the approach.
+  \item Record the result.
+  \item Make the report easy to update.
+\end{itemize}
+
+Section~\ref{sec:results} describes the result.
+```
+
+Create `sections/results.tex`:
+
+```latex
+\section{Results}
+\label{sec:results}
+
+For a simple example, let $d$ represent distance and $t$
+represent elapsed time, with $t > 0$. The average speed is
+\begin{equation}
+  v = \frac{d}{t}
+  \label{eq:speed}
+\end{equation}
+
+Equation~\eqref{eq:speed} relates the two measurements.
+
+The result is \textbf{easy to reference} without manually
+maintaining equation or section numbers.
+```
+
+A blank line starts a paragraph. Inline math belongs between dollar signs; an `equation` environment gives displayed math a number. Put a `\label` after the section command or inside the numbered equation, then refer to it rather than typing the number yourself.[1]
+
+Use names like `sec:results` and `eq:speed` so you can tell what a reference points to.
+
+## Keep citations in a bibliography
+
+Create `references.bib`:
+
+```bibtex
+@misc{projectnotes,
+  author = {{Example Team}},
+  title = {Project Notes},
+  year = {2026},
+  note = {Example reference; replace with a real source}
+}
+```
+
+This is an explicitly fictional entry to make the example build. Replace it with a source you actually used before submitting a report. The key `projectnotes` matches the `\cite` command in the introduction.
+
+This example uses traditional BibTeX, which many existing templates use. `\bibliographystyle` selects its formatting and `\bibliography` names the bibliography file without its extension.[5] If a course or journal gives you a template, follow that template's bibliography system rather than mixing it with another one.
+
+## Build from the project root
+
+In a local terminal, change into `report`, then run:
+
+```bash
+latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
+```
+
+The result is `main.pdf`. `latexmk` runs the needed tools and repeat passes, including bibliography processing, so references can settle.[4] In Overleaf, use **Recompile** instead of the terminal command.
+
+Open the PDF. Check the title, both sections, the numbered equation, the section link, and the bibliography. A successful build is useful, but it does not prove the document says what you intended.
+
+If it fails, fix the first real error in the log before chasing the later ones. Common problems are a missing file, an unclosed brace, a missing package, or an unescaped character. In prose, write `\%`, `\&`, and `\_` when you mean those literal characters.[1]
+
+## Keep the source, not the build clutter
+
+For this project, put the following in `.gitignore`:
+
+```gitignore
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+main.pdf
+```
+
+Track the `.tex`, `.bib`, and `.gitignore` files with [Git](/tutorials/git-basics). Keep a short README with the build command. Share the PDF separately when it is the deliverable; the ignore rule keeps routine builds out of your source history.
+
+As the report grows, add section files instead of turning `main.tex` into a wall of text. Get a small document building first. Add styling when you know what the document needs.
+
+## Sources
+
+- [1] [Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+- [2] [Managing a large LaTeX project](https://www.overleaf.com/learn/latex/Management_in_a_large_project)
+- [4] [latexmk: automated document generation](https://ctan.org/pkg/latexmk)
+- [5] [Bibliography management with BibTeX](https://www.overleaf.com/learn/latex/Bibliography_management_with_bibtex)

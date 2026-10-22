@@ -1,0 +1,129 @@
+export const meta = {
+  title: "Writing in Markdown",
+  description:
+    "Write a useful README with headings, links, code, and checklists.",
+  date: "September 5, 2026",
+  tags: ["Markdown", "Documentation", "GitHub"],
+};
+
+Good documentation should be easy to write and easy to read. Markdown lets you keep it in a plain text file beside your code. This tutorial builds a small README rather than trying to memorize every formatting option.
+
+You need a text editor and a Markdown preview. VS Code has one built in; GitHub also renders `.md` files. Create a file named `README.md` in a practice folder.
+
+## Start with structure
+
+Use a heading for the document title, then smaller headings for its sections. The number of `#` characters sets the heading level. Put a space after them.[3]
+
+```markdown
+# Trail Notes
+
+A small application for keeping hiking notes.
+
+## Setup
+
+Explain how to run the project here.
+
+## Usage
+
+Show the shortest useful example.
+
+### Saving a note
+
+Explain one specific task.
+```
+
+Use headings to describe the structure, not just to make words bigger. I usually start with what the project does, how to run it, and how to use it. A reader should not have to search through the code to get started.
+
+Leave a blank line between paragraphs. A single newline usually stays in the same paragraph, so pressing Enter is not always a visible line break.[6]
+
+## Emphasis, lists, and quotes
+
+Use bold for something important, italics for emphasis, and lists for things that should be scanned. A blockquote begins with `>`.[3]
+
+```markdown
+**Save your changes before closing the editor.**
+
+This is an _optional_ step.
+
+You need:
+
+- A text editor
+- Git
+
+1. Clone the repository.
+2. Read the setup instructions.
+3. Run the application.
+
+> Keep the first example small enough to finish.
+```
+
+Do not make every other sentence bold. If everything is highlighted, nothing is.
+
+## Links and images
+
+A link uses square brackets for its readable label and parentheses for its destination. An image adds `!` before the brackets; the label becomes alternative text.[3]
+
+```markdown
+Read the [setup guide](docs/setup.md).
+
+See the [Git documentation](https://git-scm.com/docs).
+
+![The saved-notes screen](images/notes.png)
+```
+
+Relative paths are resolved from the Markdown file's location. Put the referenced files in the repository too. The image example needs a real `images/notes.png`; writing the link does not create the image.
+
+Choose alternative text that explains what matters in the picture. "Image" is not much help. Preview the document to catch broken paths before sharing it.
+
+## Code should look like code
+
+Use single backticks around short commands or file names, like `git status` and `README.md`. Use fenced blocks for longer examples. Adding a language after the opening fence lets compatible renderers highlight the code.[3]
+
+The outer example below uses four backticks so it can show a normal three-backtick fence inside it:
+
+````markdown
+Run `git status` before committing.
+
+```bash
+git status
+git diff
+```
+````
+
+Keep explanatory sentences outside executable blocks. A beginner should be able to tell what to type and what is commentary. Avoid including a terminal prompt such as `$` in commands they will copy.
+
+## Checklists and tables
+
+GitHub Flavored Markdown adds features including task lists and tables. They work on GitHub and on this blog, but not every Markdown renderer supports the same extensions.[6]
+
+```markdown
+- [x] Write the introduction
+- [ ] Check the installation steps
+- [ ] Ask someone else to follow the guide
+
+| File          | Purpose         |
+| ------------- | --------------- |
+| README.md     | Getting started |
+| docs/setup.md | Detailed setup  |
+```
+
+A checkbox in a README does not create a GitHub issue or a project-board task. It is just part of the document.
+
+## Finish a README someone can use
+
+Fill in the opening example with real instructions for your project. Include requirements, exact commands, and where to find more help. Then ask yourself:
+
+- Does the first paragraph explain what this does?
+- Can a new person follow setup without guessing?
+- Do the links and image paths work?
+- Are code fences closed and headings in order?
+- Did I keep passwords, tokens, and private information out?
+
+Preview before committing. Plain Markdown and MDX are related, but MDX also interprets JSX and braces. When writing an MDX article like this one, put literal code and markup inside backticks or fenced blocks.
+
+For the next step, use [Git to track your documentation](/tutorials/git-basics), then [plan changes with a GitHub board](/tutorials/github-project-boards).
+
+## Sources
+
+- [3] [Basic writing and formatting syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
+- [6] [GitHub Flavored Markdown specification](https://github.github.com/gfm)

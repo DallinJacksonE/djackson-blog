@@ -1,0 +1,76 @@
+export const meta = {
+  title: "Collaborate with GitHub Projects",
+  description:
+    "Build a simple project board, assign small tasks, and take a documentation issue through review and merge.",
+  date: "March 12, 2026",
+  tags: ["GitHub", "Projects", "Collaboration", "Beginners"],
+};
+
+A board should answer three questions: what needs doing, who owns it, and what happens next. Practice with a small documentation team building a welcome page. Use today's GitHub Projects, not Projects (classic).
+
+## Separate the repository from the project
+
+Your **repository** holds files, commits, issues, and pull requests. A **project** organizes issues, pull requests, and draft ideas into views; it is not another copy of your files.[1][2]
+
+Use one repository for this exercise. If branches are unfamiliar, start with [Git basics](/tutorials/git-basics). Use [Writing Markdown](/tutorials/writing-markdown) for the welcome page and issue checklists.
+
+## Create the welcome board
+
+1. Open your GitHub profile, select **Projects**, then **New project**. An organization can create its project from its own **Projects** tab.[1]
+2. Under **Start from scratch**, choose **Board**, name it **Docs welcome board**, and click **Create project**. Alternatively, select a built-in template and review its fields, views, and workflows before creating it.[1]
+3. Open the project's top-right menu, then **Settings**. Configure the **Status** field's options; single-select options have editable labels, colors, and descriptions.[8]
+
+Keep just four status options: **Todo**, **In Progress**, **In Review**, and **Done**. Add **In Review** as your custom option. Agree that these mean ready to start, actively owned, awaiting feedback, and accepted after merge. Use the existing Status field rather than inventing a second progress field.
+
+## Invite people with the right access
+
+In the project menu, open **Settings → Manage access**. Under **Invite collaborators**, search for a teammate, select a role, and click **Invite**.[6]
+
+Choose **Read** for observers, **Write** for teammates updating the board, and **Admin** only for people managing access.[6]
+
+Project permission does **not** grant repository permission: private repository items remain hidden without repository access.[6] Arrange repository access separately before anyone starts work. For an organization project, an invited individual must already be an organization member or an outside collaborator on one of its repositories.[6]
+
+## Turn an idea into an owned issue
+
+Typing an idea into the project's add-item row and pressing Enter creates a **draft issue**, which exists only in the project.[2] Before scheduling it, open its card menu, choose **Convert to issue**, and select your documentation repository.[3]
+
+Alternatively, create a repository issue first, then paste its URL into the project's add-item row and press Enter.[2] Avoid creating both versions of the same task.
+
+For this example, suppose GitHub assigns **#12: Write the contributor welcome page**. Your actual number will differ. Assign one responsible teammate using **Assignees**, set **Todo**, and give them this acceptance checklist:
+
+- [ ] Explain where new contributors should start.
+- [ ] Link to `/tutorials/git-basics` and `/tutorials/writing-markdown`.
+- [ ] Check both links in the preview.
+- [ ] Have another teammate review the wording.
+
+One assignee owns follow-through, not necessarily every edit. Keep the task small enough for one focused pull request.
+
+## Move from issue to merged change
+
+1. Claim #12 and move its card to **In Progress**. Comment before starting so nobody duplicates the work.
+2. Create a branch such as `docs/welcome-12`, edit the welcome page, commit, and push. Follow the Git tutorial for those commands.
+3. Open a pull request against the repository's default branch. Describe the change and how you checked it. Put `Closes #12` in the **PR description**, using your actual issue number.[7]
+4. Move the issue to **In Review**, request a teammate's review, and address their comments. The reviewer checks the acceptance checklist and links, not just spelling.
+5. After approval and required checks, merge. Confirm the issue closed and its board status is **Done**.
+
+Closing keywords only take effect when the PR targets the **default branch**; targeting another branch ignores those keywords and merging does not close the issue.[7] Auto-closing can also be disabled under repository **Settings → General → Issues → Auto-close issues with merged linked pull requests**.[9]
+
+## Check automation; keep the board useful
+
+Open the project menu's **Workflows** page and inspect enabled rules.[4] Built-in defaults set closed issues/PRs and merged PRs to **Done**, but templates or teammates may change the configuration.[1][4]
+
+Project status and repository issue state are separate. Moving a card to Done is not proof its issue closed: Projects also supports a separately configured workflow that closes issues when their status changes.[4] For this exercise, leave that behavior off; let the merged PR close #12, then let the closure workflow update its status.
+
+Filter the board with `assignee:@me` for your tasks or `status:"In Review"` for the review queue; filters can be saved as views.[5] Keep an unfiltered team view too. Update cards when work changes, explain blockers in issue comments, and ask for review with context rather than repeated pings.
+
+## Sources
+
+- [1] [Creating a project](https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects/creating-a-project)
+- [2] [Adding items to your project](https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-project/adding-items-to-your-project)
+- [3] [Converting draft issues to issues](https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-project/converting-draft-issues-to-issues)
+- [4] [Using the built-in automations](https://docs.github.com/en/issues/planning-and-tracking-with-projects/automating-your-project/using-the-built-in-automations)
+- [5] [Filtering projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects)
+- [6] [Managing access to your projects](https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-your-project/managing-access-to-your-projects)
+- [7] [Linking a pull request to an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue)
+- [8] [About single select fields](https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields/about-single-select-fields)
+- [9] [Managing auto-closing issues](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/managing-auto-closing-issues)

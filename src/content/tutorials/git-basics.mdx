@@ -1,0 +1,123 @@
+export const meta = {
+  title: "Git Basics",
+  description: "Clone a project, make a focused commit, and share a branch without losing track of your work.",
+  date: "October 22, 2026",
+  tags: ["Git", "Development", "Getting Started"],
+};
+
+Git tracks changes so you can work in small steps instead of keeping folders named `project-final-final`. This walkthrough takes you from an existing repository to a branch you can share.
+
+## Know where your changes are
+
+Think of Git as three places: your **working tree** is the files you edit, the **staging area** is the content selected for your next snapshot, and a **commit** is that snapshot saved in local history.[1]
+
+A **remote** is another repository you exchange commits with; `origin` is the usual name for the one you cloned.[1] Git is the version-control tool. GitHub is a hosting and collaboration service, not Git itself. A local commit does not automatically appear on GitHub.
+
+## Clone and set your identity
+
+You'll need Git installed, a terminal, and an existing repository you can access. Use a practice repository you own if you want to push later. Run this from the folder where you keep projects:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git practice-project
+cd practice-project
+```
+
+Replace `YOUR-USERNAME` and `YOUR-REPOSITORY` with the actual owner and repository name. The URL is a placeholder, not a working example. `practice-project` is the new local folder.
+
+Set the name and email recorded in this repository's commits:[4]
+
+```bash
+git config --local user.name "Your Name"
+git config --local user.email "you@example.com"
+```
+
+Replace both values. Use an email you're comfortable sharing in commit history. For defaults across your repositories, use `--global` instead of `--local`.[4] These settings identify commits; they do not sign you into GitHub.
+
+## Make a focused commit
+
+This example assumes the project's main branch is named `main`. Substitute its actual name if different. Start with a clean working tree, then create a branch for your change:[6]
+
+```bash
+git status
+git switch -c update-readme
+```
+
+If status lists existing changes, stop and finish that work first. Edit or create `README.md` in your editor. Add a short project description; [Writing Markdown](/tutorials/writing-markdown) covers its formatting.
+
+Inspect, stage only that file, review the staged content, then commit:[1]
+
+```bash
+git status
+git diff
+git add README.md
+git diff --staged
+git commit -m "Clarify project description"
+git status
+```
+
+`git diff` shows unstaged changes to tracked files; a new untracked file won't appear there. Open new files to review them. `git diff --staged` shows what the next commit will contain.[1] Press `q` if a diff opens in a pager.
+
+If you edit again after staging, run `git add README.md` again to include those edits.[1] Avoid staging everything out of habit. Never commit passwords, tokens, private keys, or secret-filled `.env` files.
+
+Staged the wrong file? Before committing, unstage it:
+
+```bash
+git restore --staged README.md
+```
+
+This leaves your working file edits intact; it changes only the staging area.[2] Review, then stage the intended file again.
+
+## Bring in the latest main
+
+Before merging, run `git status` and require a clean working tree. Commit your intended work first; don't discard edits just to make the message disappear. Git warns against starting merges with uncommitted changes.[3]
+
+While still on `update-readme`, run:
+
+```bash
+git fetch origin
+git merge origin/main
+```
+
+Fetch downloads remote updates without merging them into your working branch.[1] `origin/main` represents the fetched main branch; this merge brings it into your current branch.[3] If Git opens an editor for a merge message, save and close it to finish.
+
+## Resolve a conflict or back out
+
+If both branches changed the same area, Git may pause the merge. Run `git status` to find the conflicted files.[3] Open each file, choose the correct combined content, and remove conflict-marker lines such as `<<<<<<<`, `=======`, and `>>>>>>>`.
+
+For a conflict in `README.md`, save the resolved file, check that it reads correctly, then:
+
+```bash
+git add README.md
+git diff --staged
+git status
+git commit -m "Merge main and resolve README conflict"
+```
+
+Resolve and stage every conflicted file before committing. If you're unsure, stop the in-progress merge instead:[3]
+
+```bash
+git merge --abort
+```
+
+Starting clean makes aborting safer. Ask a teammate rather than guessing which changes to keep.
+
+## Share the branch
+
+Once the merge is finished and your work is checked:
+
+```bash
+git push -u origin update-readme
+```
+
+This publishes the branch; `-u` sets its upstream so later pushes from this branch can use `git push`.[5] You'll need authentication and write permission. If access is denied, check those rather than changing history. Never force-push to get around a rejection.
+
+Open a pull request on GitHub when you're ready for review. Use [GitHub Project Boards](/tutorials/github-project-boards) to track the task. Your repeatable loop is simple: edit, inspect, stage, inspect again, commit, then share.
+
+## Sources
+
+- [1] [Git tutorial](https://git-scm.com/docs/gittutorial)
+- [2] [Restoring working-tree and staged files](https://git-scm.com/docs/git-restore)
+- [3] [Merging branches](https://git-scm.com/docs/git-merge)
+- [4] [First-time Git setup](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
+- [5] [Pushing to a remote](https://git-scm.com/docs/git-push)
+- [6] [Switching branches](https://git-scm.com/docs/git-switch)
